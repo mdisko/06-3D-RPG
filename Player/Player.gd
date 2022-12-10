@@ -38,6 +38,12 @@ func _physics_process(_delta):
 		$AnimationPlayer.play("Shoot")
 		if target != null and target.is_in_group("target"):
 			target.die()
+	if global_transform.origin.y < -15:
+		get_tree().change_scene("res://UI/GameOver.tscn")
+	if Global.timer < 0:
+		get_tree().change_scene("res://UI/GameOver.tscn")
+	if get_node("/root/Game/Target_Container").get_child_count() == 0 and get_node("/root/Game/Drone_Container").get_child_count() == 0:
+		get_tree().change_scene("res://UI/Win.tscn")
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -57,3 +63,8 @@ func get_input():
 		input_dir += Camera.global_transform.basis.x
 	input_dir = input_dir.normalized()
 	return input_dir
+
+
+func damage():
+	Global.update_score(-5)
+	get_node("/root/Game/UI").add_damage(0.5)
