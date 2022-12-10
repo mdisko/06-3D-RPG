@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://NPC/NPC.gd" type="Script" id=7]
 [ext_resource path="res://UI/UI.gd" type="Script" id=8]
 [ext_resource path="res://UI/Dialogue.gd" type="Script" id=9]
+[ext_resource path="res://Drone/Drone.tscn" type="PackedScene" id=10]
 
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 1, 0, 0, 1 )
@@ -68,6 +69,9 @@ transform = Transform( 0.339443, -0.113842, -0.933712, 0.433594, 0.899834, 0.047
 [node name="Target4" parent="Target_Container" instance=ExtResource( 4 )]
 transform = Transform( 0.290666, -0.0893299, -0.952645, 0.433594, 0.899834, 0.0479181, 0.852942, -0.426989, 0.300284, -56.4911, 7.84275, -47.6702 )
 
+[node name="Target5" parent="Target_Container" instance=ExtResource( 4 )]
+transform = Transform( 0.290666, -0.0893299, -0.952645, 0.433594, 0.899834, 0.0479181, 0.852942, -0.426989, 0.300284, 14.3273, 1.85809, -12.8074 )
+
 [node name="NPC" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1394, 0.191289, -13.6734 )
 script = ExtResource( 7 )
@@ -123,6 +127,9 @@ margin_top = -30.0
 bbcode_enabled = true
 
 [node name="Timer" type="Timer" parent="UI"]
+
+[node name="Drone" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 0.650204, 0.759759, 0, -0.759759, 0.650204, 0, 12.7026, 0 )
 
 [connection signal="body_entered" from="NPC/Area" to="NPC" method="_on_Area_body_entered"]
 [connection signal="body_exited" from="NPC/Area" to="NPC" method="_on_Area_body_exited"]
